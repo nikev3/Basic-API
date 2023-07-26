@@ -15,11 +15,25 @@ const movieTitles = [
   'Cats & Dogs',
 ];
 
-app.get('/movies', (req, res) => {
+app.get('/all', (req, res) => {
   res.json(movieTitles);
 });
 
-app.get('/movies/remove', (req, res) => {
+app.get('/find', (req, res) => {
+  const searchTerm = req.query.contains || req.query.startsWith;
+  if (searchTerm) {
+    const filteredTitles = movieTitles.filter((title) =>
+      req.query.contains
+        ? title.toLowerCase().includes(searchTerm.toLowerCase())
+        : title.toLowerCase().startsWith(searchTerm.toLowerCase())
+    );
+    res.json(filteredTitles);
+  } else {
+    res.json(movieTitles);
+  }
+});
+
+app.delete('/all', (req, res) => {
   movieTitles.length = 0;
   res.send('All the Movie Titles removed from the array.');
 });
