@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 
 
-const uri = "mongodb+srv://cfastudentuser:<password>@cluster0.nfsnbwr.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://cfastudentuser:JQbwpXCRt2wfxR0g@cluster0.nfsnbwr.mongodb.net/?retryWrites=true&w=majority";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -35,7 +35,7 @@ app.route('/all')
       // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
       // Send a ping to confirm a successful connection
-      const collection = client.db("basicdb").collection("inventory");
+      const collection = client.db("cfastudentdb").collection("Movies");
       // finds all items in the collection
       result = await collection.find({}).toArray();
   
