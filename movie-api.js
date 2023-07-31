@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 
 
-const uri = "";
+const uri = "mongodb+srv://cfastudentuser:<password>@cluster0.nfsnbwr.mongodb.net/?retryWrites=true&w=majority";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
